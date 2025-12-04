@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GAMESROCKET 2025 - 부산 벡스코</title>
+    <style>
+        /* --- 1. 폰트 정의 (요청하신 CDN) --- */
+        @font-face {
+            font-family: 'Ria';
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2410-1@1.0/RiaSans-ExtraBold.woff2') format('woff2');
+            font-weight: normal;
+            font-display: swap;
+        }
+
+        @font-face {
+            font-family: 'LineSeed';
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.0/LINESeedKR-Th.woff2') format('woff2');
+            font-weight: 100;
+            font-display: swap;
+        }
+
+        @font-face {
+            font-family: 'LineSeed';
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.0/LINESeedKR-Rg.woff2') format('woff2');
+            font-weight: 400;
+            font-display: swap;
+        }
+
+        @font-face {
+            font-family: 'LineSeed';
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.0/LINESeedKR-Bd.woff2') format('woff2');
+            font-weight: 700;
+            font-display: swap;
+        }
+
+        /* --- 2. CSS 변수 및 리셋 --- */
+        :root {
+            --bg-color: #050505;
+            --text-main: #ffffff;
+            --text-sub: #a0a0a0;
+            --accent-primary: #6c5ce7; /* 로켓 퍼플 */
+            --accent-secondary: #00cec9; /* 사이버 민트 */
+            --accent-gradient: linear-googleapis(135deg, #6c5ce7, #00cec9);
+            --font-logo: 'Ria', sans-serif;
+            --font-body: 'LineSeed', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        a { text-decoration: none; color: inherit; transition: 0.3s; }
+        ul { list-style: none; }
+
+        /* --- 3. 네비게이션 --- */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 20px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            background: rgba(5, 5, 5, 0.8);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .logo {
+            font-family: var(--font-logo);
+            font-size: 1.8rem;
+            background: linear-gradient(90deg, #fff, var(--accent-secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -1px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            font-weight: 400;
+            font-size: 0.95rem;
+            color: var(--text-sub);
+        }
+
+        .nav-links a:hover {
+            color: var(--text-main);
+            text-shadow: 0 0 8px var(--accent-secondary);
+        }
+
+        .cta-btn-small {
+            padding: 8px 20px;
+            background: var(--accent-primary);
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.9rem;
+        }
+        .cta-btn-small:hover { background: #5649c0; }
+
+        /* --- 4. 히어로 섹션 (메인) --- */
+        header {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        #canvas-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        .hero-content {
+            z-index: 1;
+            padding: 0 20px;
+            opacity: 0;
+            animation: fadeIn 1.5s ease-out forwards;
+        }
+
+        .hero-tag {
+            font-weight: 100; /* LineSeed Thin */
+            font-size: 1.2rem;
+            letter-spacing: 4px;
+            color: var(--accent-secondary);
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        .main-title {
+            font-family: var(--font-logo);
+            font-size: 5rem; /* 매우 크게 */
+            line-height: 1;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #ffffff 30%, var(--accent-primary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 10px 30px rgba(108, 92, 231, 0.3);
+        }
+
+        .hero-desc {
+            font-weight: 400;
+            font-size: 1.1rem;
+            color: var(--text-sub);
+            max-width: 600px;
+            margin: 0 auto 40px;
+        }
+
+        .hero-btn {
+            display: inline-block;
+            padding: 15px 40px;
+            background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            box-shadow: 0 0 20px rgba(0, 206, 201, 0.4);
+        }
+        .hero-btn:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 0 30px rgba(0, 206, 201, 0.6);
+        }
+
+        /* --- 5. 공통 섹션 스타일 --- */
+        section {
+            padding: 100px 5%;
+        }
+
+        .section-header {
+            margin-bottom: 60px;
+            text-align: center;
+        }
+
+        .section-title {
+            font-family: var(--font-logo);
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+
+        .section-subtitle {
+            font-weight: 100;
+            font-size: 1.1rem;
+            color: var(--text-sub);
+        }
+
+        /* --- 6. 카운트다운 --- */
+        .countdown-container {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 50px;
+            flex-wrap: wrap;
+        }
+        .time-box {
+            text-align: center;
+            min-width: 100px;
+        }
+        .time-val {
+            font-family: var(--font-logo);
+            font-size: 3rem;
+            color: var(--accent-secondary);
+        }
+        .time-label {
+            font-weight: 100;
+            font-size: 0.9rem;
+            color: var(--text-sub);
+        }
+
+        /* --- 7. 프로그램 (그리드) --- */
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 15px;
+            padding: 30px;
+            transition: 0.4s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            background: rgba(255,255,255,0.05);
+            border-color: var(--accent-primary);
+        }
+
+        .card h3 {
+            font-family: var(--font-body); /* LineSeed Bold */
+            font-weight: 700;
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: #fff;
+        }
+
+        .card p {
+            color: var(--text-sub);
+            font-size: 0.95rem;
+            font-weight: 400;
+        }
+
+        .card-icon {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: var(--accent-primary);
+        }
+
+        /* --- 8. 장소 (Location) --- */
+        .location-wrapper {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            align-items: center;
+            background: linear-gradient(to right, rgba(20,20,20,1), rgba(10,10,10,0));
+            border-radius: 20px;
+            padding: 40px;
+            border: 1px solid #222;
+        }
+
+        .loc-info {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .loc-map {
+            flex: 1;
+            min-width: 300px;
+            height: 350px;
+            background-color: #222;
+            border-radius: 15px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .loc-map iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+            filter: grayscale(100%) invert(92%) contrast(83%); /* 지도 다크모드 느낌 */
+        }
+
+        .loc-title {
+            font-family: var(--font-logo);
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        .loc-detail {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: #fff;
+        }
+
+        .loc-address {
+            font-weight: 100;
+            color: var(--text-sub);
+            margin-bottom: 30px;
+        }
+
+        /* --- 9. 푸터 --- */
+        footer {
+            padding: 50px 5%;
+            border-top: 1px solid #222;
+            text-align: center;
+            color: #666;
+        }
+        footer .logo { font-size: 1.5rem; margin-bottom: 20px; display: inline-block; }
+        footer p { font-size: 0.8rem; font-weight: 100; }
+
+        /* 애니메이션 클래스 */
+        .fade-in-section {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+            will-change: opacity, visibility;
+        }
+        .fade-in-section.is-visible {
+            opacity: 1;
+            transform: none;
+        }
+
+        /* 모바일 대응 */
+        @media (max-width: 768px) {
+            .main-title { font-size: 3rem; }
+            .nav-links { display: none; } /* 심플함을 위해 모바일 메뉴 생략 */
+            .countdown-container { gap: 15px; }
+            .time-val { font-size: 2rem; }
+        }
+
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+
+    <canvas id="canvas-bg"></canvas>
+
+    <nav>
+        <div class="logo">GAMESROCKET</div>
+        <div class="nav-links">
+            <a href="#about">페스티벌 소개</a>
+            <a href="#lineup">프로그램</a>
+            <a href="#location">개최 장소</a>
+        </div>
+        <a href="#" class="cta-btn-small">티켓 예매하기</a>
+    </nav>
+
+    <header>
+        <div class="hero-content">
+            <div class="hero-tag">2025 GAME FESTIVAL</div>
+            <h1 class="main-title">GAMESROCKET</h1>
+            <p class="hero-desc">
+                게임의 미래를 향해 쏘아 올리는 로켓.<br>
+                부산 벡스코에서 펼쳐지는 압도적인 몰입감과 새로운 경험을 만나보세요.
+            </p>
+            <a href="#location" class="hero-btn">참가 등록하기</a>
+            
+            <div class="countdown-container" id="countdown">
+                <div class="time-box"><div class="time-val" id="days">00</div><div class="time-label">DAYS</div></div>
+                <div class="time-box"><div class="time-val" id="hours">00</div><div class="time-label">HOURS</div></div>
+                <div class="time-box"><div class="time-val" id="minutes">00</div><div class="time-label">MIN</div></div>
+                <div class="time-box"><div class="time-val" id="seconds">00</div><div class="time-label">SEC</div></div>
+            </div>
+        </div>
+    </header>
+
+    <section id="about" class="fade-in-section">
+        <div class="section-header">
+            <h2 class="section-title">ABOUT FESTIVAL</h2>
+            <p class="section-subtitle">단순한 게임쇼를 넘어, 게이머들의 축제로.</p>
+        </div>
+        <div class="grid-container">
+            <div class="card">
+                <div class="card-icon">🚀</div>
+                <h3>INDIE DISCOVERY</h3>
+                <p>전 세계의 독창적인 인디 게임들을 가장 먼저 만나보고 개발자와 소통할 수 있는 기회입니다.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">🎮</div>
+                <h3>PRO TOURNAMENT</h3>
+                <p>최고의 선수들이 펼치는 숨막히는 E-Sports 결승전이 메인 스테이지에서 펼쳐집니다.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">🔮</div>
+                <h3>FUTURE TECH</h3>
+                <p>VR, AR, 그리고 차세대 콘솔까지. 게임의 미래 기술을 직접 체험해보세요.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="location" class="fade-in-section">
+        <div class="section-header">
+            <h2 class="section-title">LOCATION</h2>
+            <p class="section-subtitle">오프라인 개최지 안내</p>
+        </div>
+        
+        <div class="location-wrapper">
+            <div class="loc-info">
+                <h3 class="loc-title">BUSAN BEXCO</h3>
+                <p class="loc-detail">부산 벡스코 제1전시장 1, 2홀</p>
+                <p class="loc-address">부산광역시 해운대구 APEC로 55</p>
+                <p style="margin-bottom: 20px; font-weight: 100; color: #ccc;">
+                    지하철 2호선 센텀시티역 1번 출구 도보 5분<br>
+                    관람객 무료 주차 지원 불가
+                </p>
+                <a href="https://map.naver.com/v5/search/벡스코" target="_blank" class="cta-btn-small" style="display:inline-block;">지도 자세히 보기</a>
+            </div>
+            <div class="loc-map">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3261.4237194605923!2d129.1326463152445!3d35.170425980316524!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x356892e621d431d1%3A0x6c6c59231a4f001!2z67KexL2U!5e0!3m2!1sko!2skr!4v1628062838456!5m2!1sko!2skr" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="logo">GAMESROCKET</div>
+        <p>Copyright © 2025 GAMESROCKET Organizing Committee. All rights reserved.</p>
+        <p>본 페이지는 포트폴리오용 예시이며 실제 행사와 무관할 수 있습니다.</p>
+    </footer>
+
+    <script>
+        // --- 1. 배경 별 파티클 애니메이션 ---
+        const canvas = document.getElementById('canvas-bg');
+        const ctx = canvas.getContext('2d');
+
+        let width, height;
+        let particles = [];
+
+        function resize() {
+            width = canvas.width = window.innerWidth;
+            height = canvas.height = window.innerHeight;
+        }
+
+        class Particle {
+            constructor() {
+                this.reset();
+            }
+            
+            reset() {
+                this.x = Math.random() * width;
+                this.y = Math.random() * height;
+                this.z = Math.random() * 2 + 0.5; // 속도 및 크기
+                this.size = Math.random() * 2;
+                this.opacity = Math.random() * 0.5 + 0.1;
+            }
+
+            update() {
+                this.y -= this.z; // 위로 이동 (로켓 느낌)
+                if (this.y < 0) {
+                    this.y = height;
+                    this.x = Math.random() * width;
+                }
+            }
+
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fillStyle = `rgba(255, 255, 255, ${this.opacity})`;
+                ctx.fill();
+            }
+        }
+
+        function initParticles() {
+            particles = [];
+            for (let i = 0; i < 150; i++) {
+                particles.push(new Particle());
+            }
+        }
+
+        function animate() {
+            ctx.fillStyle = 'rgba(5, 5, 5, 0.2)'; // 궤적 효과
+            ctx.fillRect(0, 0, width, height);
+            
+            particles.forEach(p => {
+                p.update();
+                p.draw();
+            });
+            requestAnimationFrame(animate);
+        }
+
+        window.addEventListener('resize', resize);
+        resize();
+        initParticles();
+        animate();
+
+        // --- 2. 카운트다운 로직 ---
+        const countDate = new Date('Oct 15, 2025 09:00:00').getTime();
+
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const gap = countDate - now;
+
+            const second = 1000;
+            const minute = second * 60;
+            const hour = minute * 60;
+            const day = hour * 24;
+
+            const d = Math.floor(gap / day);
+            const h = Math.floor((gap % day) / hour);
+            const m = Math.floor((gap % hour) / minute);
+            const s = Math.floor((gap % minute) / second);
+
+            document.getElementById('days').innerText = d;
+            document.getElementById('hours').innerText = h < 10 ? '0' + h : h;
+            document.getElementById('minutes').innerText = m < 10 ? '0' + m : m;
+            document.getElementById('seconds').innerText = s < 10 ? '0' + s : s;
+        }
+
+        setInterval(updateCountdown, 1000);
+
+        // --- 3. 스크롤 페이드인 효과 ---
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in-section').forEach(section => {
+            observer.observe(section);
+        });
+    </script>
+</body>
+</html>
