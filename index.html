@@ -1,61 +1,44 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-    <meta charset="UTF-8" />
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
-    />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>GAMESROCKET 2025 - 부산 벡스코</title>
     <style>
         /* --- 1. 폰트 정의 --- */
         @font-face {
-            font-family: "Ria";
-            src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/2410-1@1.0/RiaSans-ExtraBold.woff2")
-                format("woff2");
+            font-family: 'Ria';
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2410-1@1.0/RiaSans-ExtraBold.woff2') format('woff2');
             font-weight: normal;
             font-display: swap;
         }
-        @font-face {
-            font-family: "LineSeed";
-            src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.0/LINESeedKR-Th.woff2")
-                format("woff2");
-            font-weight: 100;
-            font-display: swap;
-        }
-        @font-face {
-            font-family: "LineSeed";
-            src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.0/LINESeedKR-Rg.woff2")
-                format("woff2");
-            font-weight: 400;
-            font-display: swap;
-        }
-        @font-face {
-            font-family: "LineSeed";
-            src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.0/LINESeedKR-Bd.woff2")
-                format("woff2");
-            font-weight: 700;
-            font-display: swap;
-        }
+        @font-face { font-family: 'LineSeed'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.0/LINESeedKR-Th.woff2') format('woff2'); font-weight: 100; font-display: swap; }
+        @font-face { font-family: 'LineSeed'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.0/LINESeedKR-Rg.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+        @font-face { font-family: 'LineSeed'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.0/LINESeedKR-Bd.woff2') format('woff2'); font-weight: 700; font-display: swap; }
 
-        /* --- 2. 기본 스타일 (밝은 테마) --- */
+        /* --- 2. 기본 스타일 및 변수 (레인보우 그라데이션 추가) --- */
         :root {
-            --bg-color: #f5f5f7;
-            --text-main: #111111;
-            --text-sub: #6b6b6b;
-            --accent-primary: #007aff; /* 블루 톤 */
-            --accent-secondary: #34c759; /* 그린 톤 */
-            --font-logo: "Ria", sans-serif;
-            --font-body: "LineSeed", sans-serif;
-            --card-bg: #ffffff;
-            --card-border: rgba(0, 0, 0, 0.06);
+            --bg-color: #050505;
+            --text-main: #ffffff;
+            --text-sub: #a0a0a0;
+            --accent-primary: #6c5ce7;
+            --accent-secondary: #00cec9;
+            --font-logo: 'Ria', sans-serif;
+            --font-body: 'LineSeed', sans-serif;
+            
+            /* 애플 레인보우 로고 스타일 그라데이션 */
+            --rainbow-gradient: linear-gradient(
+                90deg, 
+                #ff6f69, /* Red */
+                #ffcc5c, /* Orange */
+                #fbe54e, /* Yellow */
+                #64bd63, /* Green */
+                #5097cf, /* Blue */
+                #9b59b6  /* Violet */
+            );
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
             font-family: var(--font-body);
@@ -65,303 +48,116 @@
             line-height: 1.6;
         }
 
-        a {
-            text-decoration: none;
-            color: inherit;
-            transition: 0.3s;
-        }
+        a { text-decoration: none; color: inherit; transition: 0.3s; }
 
-        /* --- 3. 네비게이션 --- */
+        /* --- 3. 네비게이션 & 로고 수정 (레인보우 적용) --- */
         nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            padding: 15px 5%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            z-index: 1000;
-            background: rgba(245, 245, 247, 0.9);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+            position: fixed; top: 0; width: 100%; padding: 15px 5%;
+            display: flex; justify-content: space-between; align-items: center;
+            z-index: 1000; background: rgba(5, 5, 5, 0.85); backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
         }
 
-        /* 옛날 느낌의 레인보우 로고 스타일 */
         .logo {
             font-family: var(--font-logo);
             font-size: 1.5rem;
-            background: linear-gradient(
-                180deg,
-                #ff3b30 0%,
-                #ff9500 16%,
-                #ffcc00 32%,
-                #34c759 48%,
-                #007aff 64%,
-                #5856d6 80%,
-                #af52de 100%
-            );
+            /* 레인보우 그라데이션 적용 */
+            background: var(--rainbow-gradient);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             letter-spacing: -0.5px;
             white-space: nowrap;
-            text-shadow: 0 1px 0 rgba(255, 255, 255, 0.7);
         }
 
-        .nav-links {
-            display: flex;
-            gap: 30px;
-        }
-        .nav-links a {
-            font-size: 0.95rem;
-            color: var(--text-sub);
-        }
-        .nav-links a:hover {
-            color: var(--text-main);
-        }
-
-        .cta-btn-small {
-            padding: 8px 16px;
-            background: #111111;
-            color: #ffffff;
-            border-radius: 999px;
-            font-weight: 700;
-            font-size: 0.85rem;
-            white-space: nowrap;
-        }
+        .nav-links { display: flex; gap: 30px; }
+        .cta-btn-small { padding: 8px 16px; background: var(--accent-primary); border-radius: 50px; font-weight: 700; font-size: 0.85rem; white-space: nowrap; }
 
         /* --- 4. 히어로 섹션 --- */
-        header {
-            position: relative;
-            min-height: 100vh;
-            padding-top: 80px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            overflow: hidden;
-        }
+        header { position: relative; min-height: 100vh; padding-top: 80px; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; overflow: hidden; }
 
-        #canvas-bg {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-        }
+        #canvas-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; }
 
-        .hero-content {
-            z-index: 1;
-            padding: 0 5%;
-            width: 100%;
-            animation: fadeIn 1.5s ease-out forwards;
-        }
+        .hero-content { z-index: 1; padding: 0 5%; width: 100%; animation: fadeIn 1.5s ease-out forwards; }
+        
+        .hero-tag { font-weight: 100; font-size: 1rem; letter-spacing: 3px; color: var(--text-sub); margin-bottom: 15px; display: block; }
 
-        .hero-tag {
-            font-weight: 100;
-            font-size: 1rem;
-            letter-spacing: 3px;
-            color: var(--accent-primary);
-            margin-bottom: 15px;
-            display: block;
-        }
-
+        /* 메인 타이틀에도 레인보우 적용 */
         .main-title {
             font-family: var(--font-logo);
             font-size: 11vw;
             line-height: 1.1;
             margin-bottom: 20px;
-            background: linear-gradient(
-                135deg,
-                #111111 0%,
-                #111111 40%,
-                #007aff 70%,
-                #34c759 100%
-            );
+            /* 레인보우 그라데이션 적용 */
+            background: var(--rainbow-gradient);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            text-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            text-shadow: 0 5px 20px rgba(255, 100, 100, 0.3); /* 그림자 색상 조정 */
             word-break: keep-all;
         }
 
-        .hero-desc {
-            font-weight: 400;
-            font-size: 1rem;
-            color: var(--text-sub);
-            max-width: 600px;
-            margin: 0 auto 30px;
-            padding: 0 10px;
-            word-break: keep-all;
-        }
+        .hero-desc { font-weight: 400; font-size: 1rem; color: var(--text-sub); max-width: 600px; margin: 0 auto 30px; padding: 0 10px; word-break: keep-all; }
 
-        .hero-btn {
-            display: inline-block;
-            padding: 14px 35px;
-            background: linear-gradient(
-                90deg,
-                var(--accent-primary),
-                var(--accent-secondary)
-            );
-            border-radius: 999px;
-            font-weight: 700;
-            font-size: 1rem;
-            color: #ffffff;
-            box-shadow: 0 12px 30px rgba(0, 122, 255, 0.25);
-            margin-bottom: 40px;
-        }
+        .hero-btn { display: inline-block; padding: 14px 35px; background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary)); border-radius: 50px; font-weight: 700; font-size: 1rem; box-shadow: 0 0 20px rgba(0, 206, 201, 0.4); margin-bottom: 40px; }
 
-        /* --- 5. 카운트다운 --- */
-        .countdown-container {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            width: 100%;
-            flex-wrap: wrap;
-        }
-        .time-box {
-            text-align: center;
-            flex: 1;
-            min-width: 60px;
-        }
-        .time-val {
-            font-family: var(--font-logo);
-            font-size: 2.2rem;
-            color: var(--accent-primary);
-            line-height: 1;
-        }
-        .time-label {
-            font-weight: 100;
-            font-size: 0.75rem;
-            color: var(--text-sub);
-            margin-top: 5px;
-        }
+        /* 카운트다운 스타일 유지 */
+        .countdown-container { display: flex; justify-content: center; gap: 5px; width: 100%; flex-wrap: wrap; }
+        .time-box { text-align: center; flex: 1; min-width: 60px; }
+        .time-val { font-family: var(--font-logo); font-size: 2.2rem; color: var(--accent-secondary); line-height: 1; }
+        .time-label { font-weight: 100; font-size: 0.75rem; color: var(--text-sub); margin-top: 5px; }
 
-        /* --- 6. 기타 섹션 --- */
-        section {
-            padding: 80px 5%;
-        }
-        .section-title {
-            font-family: var(--font-logo);
-            font-size: 2rem;
-            margin-bottom: 10px;
-        }
-        .section-subtitle {
-            font-size: 1rem;
-            color: var(--text-sub);
-            margin-bottom: 40px;
-        }
-
-        .grid-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
-        }
-        .card {
-            background: var(--card-bg);
-            border: 1px solid var(--card-border);
-            border-radius: 15px;
-            padding: 25px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
-        }
-        .card h3 {
-            font-size: 1.3rem;
-            margin-bottom: 10px;
-            color: #111111;
-            font-weight: 700;
-        }
-        .card p {
-            color: var(--text-sub);
-        }
-        .card-icon {
-            font-size: 2rem;
-            margin-bottom: 15px;
-        }
-
-        /* 장소 섹션 */
-        .location-wrapper {
-            background: #ffffff;
-            border-radius: 15px;
-            overflow: hidden;
-            border: 1px solid var(--card-border);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
-        }
-        .loc-info {
-            padding: 30px;
-        }
+        /* --- 5. 장소 섹션 (네이버 지도 링크 적용) --- */
+        section { padding: 80px 5%; }
+        .section-title { font-family: var(--font-logo); font-size: 2rem; margin-bottom: 10px; }
+        
+        .location-wrapper { background: #111; border-radius: 15px; overflow: hidden; border: 1px solid #222; }
+        .loc-info { padding: 30px; }
         .loc-map {
             width: 100%;
             height: 300px;
-            background: #e5e5ea;
+            background: #222;
+            position: relative;
+            cursor: pointer;
+            display: flex; /* 오버레이 중앙 정렬용 */
+            justify-content: center;
+            align-items: center;
         }
-        .loc-map iframe {
-            width: 100%;
-            height: 100%;
-            border: 0;
-        }
-        .loc-title {
-            font-family: var(--font-logo);
-            font-size: 1.5rem;
-            margin-bottom: 15px;
+        
+        .map-overlay {
+            position: absolute;
+            z-index: 10;
+            background: rgba(0, 0, 0, 0.7);
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            border: 1px solid var(--accent-secondary);
         }
 
-        footer {
-            padding: 40px 5%;
-            text-align: center;
-            color: #8e8e93;
-            font-size: 0.8rem;
-            border-top: 1px solid rgba(0, 0, 0, 0.06);
-            background: #f9f9fb;
-        }
+        /* 지도는 단순 배경 및 링크로 처리 */
+        .loc-map iframe { width: 100%; height: 100%; border: 0; opacity: 0.5; }
+        .loc-title { font-family: var(--font-logo); font-size: 1.5rem; margin-bottom: 15px; }
+
+        /* --- 6. 푸터 --- */
+        footer { padding: 40px 5%; text-align: center; color: #666; font-size: 0.8rem; border-top: 1px solid #222; }
 
         /* --- 7. 모바일 전용 미디어 쿼리 --- */
         @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-
-            .main-title {
-                font-size: 13vw;
-            }
-
-            .hero-desc {
-                font-size: 0.95rem;
-                padding: 0;
-            }
-
-            .countdown-container {
-                gap: 5px;
-            }
-            .time-val {
-                font-size: 1.8rem;
-            }
-            .time-label {
-                font-size: 0.7rem;
-            }
-
-            section {
-                padding: 60px 5%;
-            }
+            .nav-links { display: none; }
+            .main-title { font-size: 13vw; }
+            .time-val { font-size: 1.8rem; }
         }
 
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(10px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
+        @keyframes fadeIn { to { opacity: 1; } }
     </style>
 </head>
 <body>
+
     <canvas id="canvas-bg"></canvas>
 
     <nav>
         <div class="logo">GAMESROCKET</div>
-        <a href="#" class="cta-btn-small">티켓 예매</a>
+        <a href="#location" class="cta-btn-small">티켓 예매</a>
     </nav>
 
     <header>
@@ -369,37 +165,22 @@
             <span class="hero-tag">2025 GAME FESTIVAL</span>
             <h1 class="main-title">GAMESROCKET</h1>
             <p class="hero-desc">
-                게임의 미래를 향해 쏘아 올리는 로켓.<br />
+                게임의 미래를 향해 쏘아 올리는 로켓.<br>
                 부산 벡스코에서 펼쳐지는 새로운 경험.
             </p>
             <a href="#location" class="hero-btn">참가 등록하기</a>
-
+            
             <div class="countdown-container">
-                <div class="time-box">
-                    <div class="time-val" id="days">00</div>
-                    <div class="time-label">DAYS</div>
-                </div>
-                <div class="time-box">
-                    <div class="time-val" id="hours">00</div>
-                    <div class="time-label">HOURS</div>
-                </div>
-                <div class="time-box">
-                    <div class="time-val" id="minutes">00</div>
-                    <div class="time-label">MIN</div>
-                </div>
-                <div class="time-box">
-                    <div class="time-val" id="seconds">00</div>
-                    <div class="time-label">SEC</div>
-                </div>
+                <div class="time-box"><div class="time-val" id="days">00</div><div class="time-label">DAYS</div></div>
+                <div class="time-box"><div class="time-val" id="hours">00</div><div class="time-label">HOURS</div></div>
+                <div class="time-box"><div class="time-val" id="minutes">00</div><div class="time-label">MIN</div></div>
+                <div class="time-box"><div class="time-val" id="seconds">00</div><div class="time-label">SEC</div></div>
             </div>
         </div>
     </header>
 
     <section id="about">
-        <div
-            class="section-header"
-            style="text-align: center; margin-bottom: 40px"
-        >
+        <div class="section-header" style="text-align: center; margin-bottom: 40px;">
             <h2 class="section-title">ABOUT</h2>
             <p class="section-subtitle">게이머들을 위한 최고의 축제</p>
         </div>
@@ -418,116 +199,86 @@
     </section>
 
     <section id="location">
-        <div
-            class="section-header"
-            style="text-align: center; margin-bottom: 40px"
-        >
+        <div class="section-header" style="text-align: center; margin-bottom: 40px;">
             <h2 class="section-title">LOCATION</h2>
         </div>
         <div class="location-wrapper">
-            <div class="loc-map">
-                <!-- ✅ Yandex Map 사용 (BEXCO 근처 좌표 예시) -->
-                <iframe
-                    src="https://yandex.com/map-widget/v1/?ll=129.1290%2C35.1690&z=15&pt=129.1290,35.1690,pm2rdm"
-                    loading="lazy"
-                ></iframe>
+            <div class="loc-map" onclick="window.open('https://map.naver.com/p/search/부산 벡스코', '_blank');">
+                 <div class="map-overlay">Naver 지도로 보기 (클릭)</div>
+                 <iframe src="http://googleusercontent.com/maps.google.com/2" loading="lazy"></iframe>
             </div>
             <div class="loc-info">
                 <h3 class="loc-title">BUSAN BEXCO</h3>
-                <p
-                    style="
-                        font-weight: 700;
-                        color: #111111;
-                        margin-bottom: 5px;
-                    "
-                >
-                    제1전시장 1, 2홀
-                </p>
-                <p style="color: var(--text-sub); font-size: 0.9rem">
-                    부산광역시 해운대구 APEC로 55
-                </p>
+                <p style="font-weight: 700; color:#fff; margin-bottom: 5px;">제1전시장 1, 2홀</p>
+                <p style="color: var(--text-sub); font-size: 0.9rem;">부산광역시 해운대구 APEC로 55</p>
             </div>
         </div>
     </section>
 
     <footer>
-        <div class="logo" style="margin-bottom: 10px">GAMESROCKET</div>
+        <div class="logo" style="margin-bottom: 10px;">GAMESROCKET</div>
         <p>© 2025 GAMESROCKET. All rights reserved.</p>
     </footer>
 
     <script>
-        // 1. 캔버스 배경 (밝은 테마용 점 입자)
-        const canvas = document.getElementById("canvas-bg");
-        const ctx = canvas.getContext("2d");
+        // 1. 캔버스 배경
+        const canvas = document.getElementById('canvas-bg');
+        const ctx = canvas.getContext('2d');
         let width, height;
         let particles = [];
 
-        function resize() {
-            width = (canvas.width = window.innerWidth);
-            height = (canvas.height = window.innerHeight);
-        }
+        function resize() { width = canvas.width = window.innerWidth; height = canvas.height = window.innerHeight; }
 
         class Particle {
-            constructor() {
-                this.reset();
-            }
+            constructor() { this.reset(); }
             reset() {
                 this.x = Math.random() * width;
                 this.y = Math.random() * height;
-                this.speed = Math.random() * 1.5 + 0.3;
-                this.size = Math.random() * 2.2 + 0.5;
-                this.opacity = Math.random() * 0.25 + 0.05;
+                this.speed = Math.random() * 2 + 0.5;
+                this.size = Math.random() * 2;
+                this.opacity = Math.random() * 0.5 + 0.1;
             }
             update() {
                 this.y -= this.speed;
-                if (this.y < 0) {
-                    this.y = height;
-                    this.x = Math.random() * width;
-                }
+                if (this.y < 0) this.reset();
             }
             draw() {
                 ctx.beginPath();
                 ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                ctx.fillStyle = `rgba(0, 0, 0, ${this.opacity})`;
+                ctx.fillStyle = `rgba(255, 255, 255, ${this.opacity})`;
                 ctx.fill();
             }
         }
 
         function initParticles() {
             particles = [];
-            const count = window.innerWidth < 768 ? 40 : 80;
+            const count = window.innerWidth < 768 ? 50 : 100;
             for (let i = 0; i < count; i++) particles.push(new Particle());
         }
 
         function animate() {
             ctx.clearRect(0, 0, width, height);
-            particles.forEach((p) => {
-                p.update();
-                p.draw();
-            });
+            particles.forEach(p => { p.update(); p.draw(); });
             requestAnimationFrame(animate);
         }
 
-        window.addEventListener("resize", () => {
-            resize();
-            initParticles();
-        });
+        window.addEventListener('resize', () => { resize(); initParticles(); });
         resize();
         initParticles();
         animate();
 
-        // 2. 카운트다운 (미래 날짜 설정)
-        const countDate = new Date("Dec 25, 2025 00:00:00").getTime();
+        // 2. 카운트다운
+        const countDate = new Date('Dec 25, 2025 00:00:00').getTime();
 
         function updateCountdown() {
             const now = new Date().getTime();
             const gap = countDate - now;
 
             if (gap < 0) {
-                document.getElementById("days").innerText = "0";
-                document.getElementById("hours").innerText = "00";
-                document.getElementById("minutes").innerText = "00";
-                document.getElementById("seconds").innerText = "00";
+                document.getElementById('days').innerText = "0";
+                document.getElementById('hours').innerText = "00";
+                document.getElementById('minutes').innerText = "00";
+                document.getElementById('seconds').innerText = "00";
                 return;
             }
 
@@ -541,13 +292,10 @@
             const m = Math.floor((gap % hour) / minute);
             const s = Math.floor((gap % minute) / second);
 
-            document.getElementById("days").innerText = d;
-            document.getElementById("hours").innerText =
-                h < 10 ? "0" + h : h;
-            document.getElementById("minutes").innerText =
-                m < 10 ? "0" + m : m;
-            document.getElementById("seconds").innerText =
-                s < 10 ? "0" + s : s;
+            document.getElementById('days').innerText = d;
+            document.getElementById('hours').innerText = h < 10 ? '0' + h : h;
+            document.getElementById('minutes').innerText = m < 10 ? '0' + m : m;
+            document.getElementById('seconds').innerText = s < 10 ? '0' + s : s;
         }
         setInterval(updateCountdown, 1000);
         updateCountdown();
