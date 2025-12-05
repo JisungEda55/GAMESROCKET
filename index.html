@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>GAMESROCKET 2025 - 부산 벡스코</title>
+    <title>GAMESROCKET 2025 | The Global Gaming Summit - 부산 벡스코</title>
     <style>
-        /* --- 1. 폰트 정의 --- */
+        /* --- 1. 폰트 정의 (요청하신 CDN) --- */
         @font-face {
             font-family: 'Ria';
             src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2410-1@1.0/RiaSans-ExtraBold.woff2') format('woff2');
@@ -16,29 +16,19 @@
         @font-face { font-family: 'LineSeed'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.0/LINESeedKR-Rg.woff2') format('woff2'); font-weight: 400; font-display: swap; }
         @font-face { font-family: 'LineSeed'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.0/LINESeedKR-Bd.woff2') format('woff2'); font-weight: 700; font-display: swap; }
 
-        /* --- 2. 기본 스타일 및 변수 (레인보우 그라데이션 추가) --- */
+        /* --- 2. 기본 스타일 및 변수 (전문적인 다크 & 일렉트릭 블루 테마) --- */
         :root {
-            --bg-color: #050505;
+            --bg-color: #0c0c0c; /* 짙은 블랙 */
             --text-main: #ffffff;
-            --text-sub: #a0a0a0;
-            --accent-primary: #6c5ce7;
-            --accent-secondary: #00cec9;
+            --text-sub: #b0b0b0;
+            --accent-blue: #00f0ff; /* 일렉트릭 블루 */
+            --accent-dark: #1a1a1a;
             --font-logo: 'Ria', sans-serif;
             --font-body: 'LineSeed', sans-serif;
-            
-            /* 애플 레인보우 로고 스타일 그라데이션 */
-            --rainbow-gradient: linear-gradient(
-                90deg, 
-                #ff6f69, /* Red */
-                #ffcc5c, /* Orange */
-                #fbe54e, /* Yellow */
-                #64bd63, /* Green */
-                #5097cf, /* Blue */
-                #9b59b6  /* Violet */
-            );
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
 
         body {
             font-family: var(--font-body);
@@ -48,104 +38,261 @@
             line-height: 1.6;
         }
 
-        a { text-decoration: none; color: inherit; transition: 0.3s; }
+        a { text-decoration: none; color: var(--accent-blue); transition: 0.3s; }
+        ul { list-style: none; }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
 
-        /* --- 3. 네비게이션 & 로고 수정 (레인보우 적용) --- */
+        /* --- 3. 네비게이션 --- */
         nav {
-            position: fixed; top: 0; width: 100%; padding: 15px 5%;
-            display: flex; justify-content: space-between; align-items: center;
-            z-index: 1000; background: rgba(5, 5, 5, 0.85); backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(255,255,255,0.1);
+            position: sticky; /* 스크롤 시 고정 */
+            top: 0;
+            width: 100%;
+            padding: 20px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            background: rgba(12, 12, 12, 0.95);
+            backdrop-filter: blur(5px);
+            border-bottom: 1px solid var(--accent-dark);
         }
 
         .logo {
             font-family: var(--font-logo);
-            font-size: 1.5rem;
-            /* 레인보우 그라데이션 적용 */
-            background: var(--rainbow-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            letter-spacing: -0.5px;
+            font-size: 1.8rem;
+            color: var(--text-main);
+            letter-spacing: -1px;
             white-space: nowrap;
         }
 
-        .nav-links { display: flex; gap: 30px; }
-        .cta-btn-small { padding: 8px 16px; background: var(--accent-primary); border-radius: 50px; font-weight: 700; font-size: 0.85rem; white-space: nowrap; }
+        .nav-links { display: flex; gap: 35px; }
+        .nav-links a { font-weight: 400; font-size: 0.95rem; color: var(--text-sub); }
+        .nav-links a:hover { color: var(--accent-blue); text-shadow: 0 0 5px var(--accent-blue); }
 
-        /* --- 4. 히어로 섹션 --- */
-        header { position: relative; min-height: 100vh; padding-top: 80px; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; overflow: hidden; }
-
-        #canvas-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; }
-
-        .hero-content { z-index: 1; padding: 0 5%; width: 100%; animation: fadeIn 1.5s ease-out forwards; }
-        
-        .hero-tag { font-weight: 100; font-size: 1rem; letter-spacing: 3px; color: var(--text-sub); margin-bottom: 15px; display: block; }
-
-        /* 메인 타이틀에도 레인보우 적용 */
-        .main-title {
-            font-family: var(--font-logo);
-            font-size: 11vw;
-            line-height: 1.1;
-            margin-bottom: 20px;
-            /* 레인보우 그라데이션 적용 */
-            background: var(--rainbow-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-shadow: 0 5px 20px rgba(255, 100, 100, 0.3); /* 그림자 색상 조정 */
-            word-break: keep-all;
+        .cta-btn-small {
+            padding: 10px 20px;
+            background: var(--accent-blue);
+            color: var(--bg-color);
+            border: 1px solid var(--accent-blue);
+            border-radius: 5px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            box-shadow: 0 0 15px rgba(0, 240, 255, 0.5);
         }
+        .cta-btn-small:hover { background: transparent; color: var(--accent-blue); }
 
-        .hero-desc { font-weight: 400; font-size: 1rem; color: var(--text-sub); max-width: 600px; margin: 0 auto 30px; padding: 0 10px; word-break: keep-all; }
-
-        .hero-btn { display: inline-block; padding: 14px 35px; background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary)); border-radius: 50px; font-weight: 700; font-size: 1rem; box-shadow: 0 0 20px rgba(0, 206, 201, 0.4); margin-bottom: 40px; }
-
-        /* 카운트다운 스타일 유지 */
-        .countdown-container { display: flex; justify-content: center; gap: 5px; width: 100%; flex-wrap: wrap; }
-        .time-box { text-align: center; flex: 1; min-width: 60px; }
-        .time-val { font-family: var(--font-logo); font-size: 2.2rem; color: var(--accent-secondary); line-height: 1; }
-        .time-label { font-weight: 100; font-size: 0.75rem; color: var(--text-sub); margin-top: 5px; }
-
-        /* --- 5. 장소 섹션 (네이버 지도 링크 적용) --- */
-        section { padding: 80px 5%; }
-        .section-title { font-family: var(--font-logo); font-size: 2rem; margin-bottom: 10px; }
-        
-        .location-wrapper { background: #111; border-radius: 15px; overflow: hidden; border: 1px solid #222; }
-        .loc-info { padding: 30px; }
-        .loc-map {
-            width: 100%;
-            height: 300px;
-            background: #222;
+        /* --- 4. 히어로 섹션 (메인) --- */
+        header {
             position: relative;
-            cursor: pointer;
-            display: flex; /* 오버레이 중앙 정렬용 */
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        #canvas-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; opacity: 0.3; }
+
+        .hero-content {
+            z-index: 1;
+            padding: 0 20px;
+            width: 100%;
+            animation: fadeIn 1.5s ease-out forwards;
+        }
+
+        .hero-date {
+            font-weight: 100; /* LineSeed Thin */
+            font-size: 1.2rem;
+            letter-spacing: 5px;
+            color: var(--accent-blue);
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+
+        .main-title {
+            font-family: var(--font-logo);
+            font-size: 6vw; /* 화면 크기에 비례하여 전문가 느낌 */
+            line-height: 1;
+            margin-bottom: 25px;
+            color: var(--text-main);
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
         }
         
-        .map-overlay {
-            position: absolute;
-            z-index: 10;
-            background: rgba(0, 0, 0, 0.7);
-            color: #fff;
-            padding: 10px 20px;
-            border-radius: 8px;
-            font-weight: 700;
-            font-size: 1.1rem;
-            border: 1px solid var(--accent-secondary);
+        /* 6vw가 너무 커질 경우 대비 (PC 환경) */
+        @media (min-width: 1000px) {
+            .main-title { font-size: 60px; }
         }
 
-        /* 지도는 단순 배경 및 링크로 처리 */
-        .loc-map iframe { width: 100%; height: 100%; border: 0; opacity: 0.5; }
-        .loc-title { font-family: var(--font-logo); font-size: 1.5rem; margin-bottom: 15px; }
 
-        /* --- 6. 푸터 --- */
-        footer { padding: 40px 5%; text-align: center; color: #666; font-size: 0.8rem; border-top: 1px solid #222; }
+        .hero-location {
+            font-weight: 400;
+            font-size: 1.1rem;
+            color: var(--text-sub);
+            margin-bottom: 40px;
+            letter-spacing: 1px;
+        }
 
-        /* --- 7. 모바일 전용 미디어 쿼리 --- */
+        .hero-btn {
+            display: inline-block;
+            padding: 16px 50px;
+            background: var(--accent-blue);
+            color: var(--bg-color);
+            border-radius: 5px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            box-shadow: 0 0 30px rgba(0, 240, 255, 0.7);
+        }
+        .hero-btn:hover { background: #00cccc; transform: translateY(-2px); }
+
+        /* --- 5. 공통 섹션 스타일 --- */
+        section {
+            padding: 100px 0;
+        }
+
+        .section-header {
+            margin-bottom: 60px;
+            text-align: center;
+        }
+
+        .section-tag {
+            font-weight: 100;
+            color: var(--accent-blue);
+            margin-bottom: 5px;
+            letter-spacing: 3px;
+        }
+
+        .section-title {
+            font-family: var(--font-logo);
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .section-subtitle {
+            font-weight: 400;
+            font-size: 1rem;
+            color: var(--text-sub);
+        }
+
+        /* --- 6. 프로그램 섹션 --- */
+        #schedule .schedule-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+        .schedule-item {
+            background: var(--accent-dark);
+            padding: 25px;
+            border-left: 5px solid var(--accent-blue);
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+        .schedule-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+        }
+        .schedule-item h3 {
+            font-weight: 700;
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+            color: var(--text-main);
+        }
+        .schedule-item p {
+            font-size: 0.95rem;
+            color: var(--text-sub);
+        }
+        .schedule-item .time {
+            font-weight: 100;
+            color: var(--accent-blue);
+            margin-bottom: 15px;
+            display: block;
+        }
+        
+        /* --- 7. 로케이션 (장소) 섹션 --- */
+        #location .location-box {
+            background: var(--accent-dark);
+            padding: 40px;
+            border-radius: 10px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            align-items: center;
+        }
+        .loc-info {
+            flex: 1;
+            min-width: 300px;
+        }
+        .loc-map-container {
+            flex: 1;
+            min-width: 300px;
+            height: 350px;
+            border-radius: 8px;
+            overflow: hidden;
+            position: relative;
+        }
+        .loc-map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+            filter: grayscale(80%) brightness(120%); /* 지도 톤을 어둡게 맞춤 */
+        }
+        .loc-title {
+            font-family: var(--font-logo);
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+        .loc-address {
+            font-weight: 400;
+            color: var(--accent-blue);
+            margin-bottom: 15px;
+        }
+        
+        /* --- 8. 푸터 --- */
+        footer {
+            padding: 40px 5%;
+            border-top: 1px solid var(--accent-dark);
+            text-align: center;
+            color: #555;
+            font-size: 0.85rem;
+        }
+        footer .logo { font-size: 1.3rem; margin-bottom: 10px; }
+        footer a { color: #888; margin: 0 10px; }
+
+        /* --- 9. 애니메이션 및 모바일 최적화 --- */
+        .fade-in-section {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 1s ease-out, transform 1s ease-out;
+            will-change: opacity, transform;
+        }
+        .fade-in-section.is-visible {
+            opacity: 1;
+            transform: none;
+        }
+
         @media (max-width: 768px) {
+            nav { padding: 15px 5%; }
+            .logo { font-size: 1.3rem; }
             .nav-links { display: none; }
-            .main-title { font-size: 13vw; }
-            .time-val { font-size: 1.8rem; }
+            .cta-btn-small { padding: 8px 12px; font-size: 0.8rem; }
+            
+            .main-title { font-size: 9vw; }
+            .hero-date { font-size: 0.9rem; }
+            .hero-location { font-size: 1rem; }
+            .hero-btn { padding: 12px 30px; font-size: 1rem; }
+            
+            section { padding: 60px 0; }
+            .section-title { font-size: 2rem; }
+            
+            /* 그리드 레이아웃 모바일 최적화 */
+            #schedule .schedule-grid { grid-template-columns: 1fr; }
+            .loc-info, .loc-map-container { min-width: 100%; }
         }
 
         @keyframes fadeIn { to { opacity: 1; } }
@@ -156,72 +303,114 @@
     <canvas id="canvas-bg"></canvas>
 
     <nav>
-        <div class="logo">GAMESROCKET</div>
-        <a href="#location" class="cta-btn-small">티켓 예매</a>
+        <div class="container" style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+            <a href="#" class="logo">GAMESROCKET</a>
+            <div class="nav-links">
+                <a href="#schedule">프로그램</a>
+                <a href="#exhibitors">참가사</a>
+                <a href="#location">장소</a>
+            </div>
+            <a href="#" class="cta-btn-small">티켓 구매</a>
+        </div>
     </nav>
 
     <header>
         <div class="hero-content">
-            <span class="hero-tag">2025 GAME FESTIVAL</span>
+            <h2 class="hero-date">2025. SEP 10 - 13</h2>
             <h1 class="main-title">GAMESROCKET</h1>
-            <p class="hero-desc">
-                게임의 미래를 향해 쏘아 올리는 로켓.<br>
-                부산 벡스코에서 펼쳐지는 새로운 경험.
-            </p>
-            <a href="#location" class="hero-btn">참가 등록하기</a>
+            <p class="hero-location">부산 벡스코 (BEXCO) | 세계 게임의 새로운 축</p>
             
-            <div class="countdown-container">
-                <div class="time-box"><div class="time-val" id="days">00</div><div class="time-label">DAYS</div></div>
-                <div class="time-box"><div class="time-val" id="hours">00</div><div class="time-label">HOURS</div></div>
-                <div class="time-box"><div class="time-val" id="minutes">00</div><div class="time-label">MIN</div></div>
-                <div class="time-box"><div class="time-val" id="seconds">00</div><div class="time-label">SEC</div></div>
+            <a href="#" class="hero-btn">PRE-REGISTRATION OPEN</a>
+            
+            <div class="countdown-container" id="countdown" style="margin-top: 60px; max-width: 450px; margin-left: auto; margin-right: auto; gap: 20px;">
+                <div class="time-box"><div class="time-val" id="days" style="font-size: 2.5rem; color: var(--text-main);">00</div><div class="time-label">DAYS</div></div>
+                <div class="time-box"><div class="time-val" id="hours" style="font-size: 2.5rem; color: var(--text-main);">00</div><div class="time-label">HOURS</div></div>
+                <div class="time-box"><div class="time-val" id="minutes" style="font-size: 2.5rem; color: var(--text-main);">00</div><div class="time-label">MIN</div></div>
+                <div class="time-box"><div class="time-val" id="seconds" style="font-size: 2.5rem; color: var(--text-main);">00</div><div class="time-label">SEC</div></div>
             </div>
         </div>
     </header>
 
-    <section id="about">
-        <div class="section-header" style="text-align: center; margin-bottom: 40px;">
-            <h2 class="section-title">ABOUT</h2>
-            <p class="section-subtitle">게이머들을 위한 최고의 축제</p>
-        </div>
-        <div class="grid-container">
-            <div class="card">
-                <div class="card-icon">🚀</div>
-                <h3>INDIE DISCOVERY</h3>
-                <p>독창적인 인디 게임들을 가장 먼저 만나보세요.</p>
+    <section id="schedule" class="fade-in-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">THE AGENDA</span>
+                <h2 class="section-title">MAIN PROGRAM</h2>
+                <p class="section-subtitle">핵심 컨퍼런스, 시연, 그리고 토너먼트 일정을 확인하세요.</p>
             </div>
-            <div class="card">
-                <div class="card-icon">🎮</div>
-                <h3>PRO MATCH</h3>
-                <p>최고의 선수들이 펼치는 E-Sports 결승전.</p>
+            <div class="schedule-grid">
+                <div class="schedule-item">
+                    <span class="time">SEP 10 | 11:00 AM</span>
+                    <h3>KEYNOTE: Future of Gaming</h3>
+                    <p>글로벌 탑 개발자들이 제시하는 차세대 게임 산업의 비전과 방향성.</p>
+                </div>
+                <div class="schedule-item">
+                    <span class="time">SEP 11 | 02:00 PM</span>
+                    <h3>Pro-League Final Match</h3>
+                    <p>최고의 E-Sports 팀들이 우승 트로피를 두고 펼치는 치열한 결승전.</p>
+                </div>
+                <div class="schedule-item">
+                    <span class="time">SEP 12 | ALL DAY</span>
+                    <h3>B2B EXPO & Networking</h3>
+                    <p>비즈니스 파트너 발굴 및 투자 유치를 위한 전용 전시와 네트워킹 세션.</p>
+                </div>
+                <div class="schedule-item">
+                    <span class="time">SEP 13 | 04:00 PM</span>
+                    <h3>Indie Game Showcase Award</h3>
+                    <p>올해의 가장 혁신적인 인디 게임을 선정하고 시상하는 최종 무대.</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <section id="location">
-        <div class="section-header" style="text-align: center; margin-bottom: 40px;">
-            <h2 class="section-title">LOCATION</h2>
-        </div>
-        <div class="location-wrapper">
-            <div class="loc-map" onclick="window.open('https://map.naver.com/p/search/부산 벡스코', '_blank');">
-                 <div class="map-overlay">Naver 지도로 보기 (클릭)</div>
-                 <iframe src="http://googleusercontent.com/maps.google.com/2" loading="lazy"></iframe>
+    <section id="exhibitors" class="fade-in-section" style="background-color: var(--accent-dark);">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">PARTNERS</span>
+                <h2 class="section-title">EXHIBITING COMPANIES</h2>
+                <p class="section-subtitle">200개 이상의 글로벌 스튜디오와 퍼블리셔가 참여합니다.</p>
             </div>
-            <div class="loc-info">
-                <h3 class="loc-title">BUSAN BEXCO</h3>
-                <p style="font-weight: 700; color:#fff; margin-bottom: 5px;">제1전시장 1, 2홀</p>
-                <p style="color: var(--text-sub); font-size: 0.9rem;">부산광역시 해운대구 APEC로 55</p>
+            <div style="text-align: center; color: var(--text-sub); font-weight: 100; font-size: 1.5rem;">
+                <p>NEXON · EA · UNITY · EPIC GAMES · KRAFTON · UBISOFT · SONY · MICROSOFT</p>
+                <p style="margin-top: 15px; font-size: 1rem;">* 더 많은 참가사는 공식 홈페이지에서 곧 공개됩니다.</p>
+            </div>
+        </div>
+    </section>
+
+
+    <section id="location" class="fade-in-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">WHERE TO FIND US</span>
+                <h2 class="section-title">VENUE</h2>
+                <p class="section-subtitle">부산 벡스코, 아시아 게임 산업의 중심.</p>
+            </div>
+            
+            <div class="location-box">
+                <div class="loc-info">
+                    <h3 class="loc-title">BUSAN BEXCO</h3>
+                    <p class="loc-address">부산광역시 해운대구 APEC로 55 (제1전시장)</p>
+                    <p style="color: var(--text-sub); margin-bottom: 25px;">
+                        부산 지하철 2호선 센텀시티역과 직접 연결되어 편리하게 방문할 수 있습니다.<br>
+                        주변 호텔 및 편의 시설이 완비되어 있습니다.
+                    </p>
+                    <a href="https://map.naver.com/p/search/부산 벡스코" target="_blank" class="cta-btn-small">네이버 지도로 길찾기</a>
+                </div>
+                <div class="loc-map-container">
+                     <iframe src="http://googleusercontent.com/maps.google.com/3" loading="lazy"></iframe>
+                </div>
             </div>
         </div>
     </section>
 
     <footer>
-        <div class="logo" style="margin-bottom: 10px;">GAMESROCKET</div>
-        <p>© 2025 GAMESROCKET. All rights reserved.</p>
+        <div class="logo">GAMESROCKET</div>
+        <p style="margin-top: 5px;">문의: info@gamesrocket.com | 개인정보처리방침</p>
+        <p style="margin-top: 10px; color: #444;">&copy; 2025 GAMESROCKET Organization. All Rights Reserved.</p>
     </footer>
 
     <script>
-        // 1. 캔버스 배경
+        // --- 1. 배경 캔버스 (입자 애니메이션) ---
         const canvas = document.getElementById('canvas-bg');
         const ctx = canvas.getContext('2d');
         let width, height;
@@ -234,30 +423,31 @@
             reset() {
                 this.x = Math.random() * width;
                 this.y = Math.random() * height;
-                this.speed = Math.random() * 2 + 0.5;
-                this.size = Math.random() * 2;
-                this.opacity = Math.random() * 0.5 + 0.1;
+                this.speed = Math.random() * 0.8 + 0.2; // 속도 낮춤
+                this.size = Math.random() * 1.5 + 0.5;
+                this.opacity = Math.random() * 0.4 + 0.05; // 투명도 낮춤
             }
             update() {
-                this.y -= this.speed;
-                if (this.y < 0) this.reset();
+                this.y += this.speed; // 이번엔 아래로 이동 (은은한 효과)
+                if (this.y > height) this.reset();
             }
             draw() {
                 ctx.beginPath();
                 ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                ctx.fillStyle = `rgba(255, 255, 255, ${this.opacity})`;
+                ctx.fillStyle = `rgba(0, 240, 255, ${this.opacity})`; // 액센트 블루 컬러
                 ctx.fill();
             }
         }
 
         function initParticles() {
             particles = [];
-            const count = window.innerWidth < 768 ? 50 : 100;
+            const count = window.innerWidth < 768 ? 50 : 80;
             for (let i = 0; i < count; i++) particles.push(new Particle());
         }
 
         function animate() {
-            ctx.clearRect(0, 0, width, height);
+            ctx.fillStyle = 'rgba(12, 12, 12, 0.1)'; // 잔상 효과 최소화
+            ctx.fillRect(0, 0, width, height);
             particles.forEach(p => { p.update(); p.draw(); });
             requestAnimationFrame(animate);
         }
@@ -267,8 +457,8 @@
         initParticles();
         animate();
 
-        // 2. 카운트다운
-        const countDate = new Date('Dec 25, 2025 00:00:00').getTime();
+        // --- 2. 카운트다운 로직 (2025년 9월 10일 09시 기준) ---
+        const countDate = new Date('Sep 10, 2025 09:00:00').getTime();
 
         function updateCountdown() {
             const now = new Date().getTime();
@@ -299,6 +489,22 @@
         }
         setInterval(updateCountdown, 1000);
         updateCountdown();
+
+        // --- 3. 스크롤 페이드인 효과 ---
+        const observerOptions = { threshold: 0.1 };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in-section').forEach(section => {
+            observer.observe(section);
+        });
     </script>
 </body>
 </html>
